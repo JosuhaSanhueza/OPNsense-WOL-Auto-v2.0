@@ -1,7 +1,9 @@
 #!/bin/sh
 # ======================================================
-#  WOL Auto v2.1 - Multi-rango (Labs)
-#  Reporte a 2 Chat ID
+#  Script WOL Multi v2.0 (corregido - lógica case)
+#  optimizado (solo DHCP static mappings)
+#  Tener en cuenta tu Broadcast si es máscara 24 es "192.168.12.255"
+#  si es 16 "192.168.255.255"
 # ======================================================
 
 # === CONFIGURACIÓN ===
@@ -9,7 +11,7 @@ BROADCAST="192.168.255.255"
 CONFIG_FILE="/conf/config.xml"
 BOT_TOKEN="TU_TOKEN"
 CHAT_ID_1="TU_CHAT_ID"
-CHAT_ID_2="CHAT_ID_2"
+CHAT_ID_2="TU_CHAT_ID2"
 FERIADO_API="https://date.nager.at/api/v3/PublicHolidays/$(date +%Y)/CL"
 
 LOG_FILE="/tmp/log_encendido_$(date +%Y%m%d_%H%M).txt"

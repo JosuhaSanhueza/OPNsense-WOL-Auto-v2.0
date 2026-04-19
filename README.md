@@ -129,59 +129,50 @@ Filtra automáticamente el rango:
 
 ## 🔧 Configuración de rango de IP `wol_auto.sh`
 
-El script filtra automáticamente los equipos basándose en el rango de IP definido dentro del bloque `awk`.
+El script utiliza una función llamada es_ip_valida() para determinar qué equipos deben ser encendidos.
 
-Por defecto:
+📌 Ubicación
 
-```
-192.168.12.101 – 192.168.12.146
-```
+Dentro del script encontrarás:
 
-Esto está definido mediante una expresión regular:
+es_ip_valida() {
+    ip=$1
+    ultimo=$(echo "$ip" | awk -F. '{print $4}')
 
-```bash
-(10[1-9]|1[1-3][0-9]|14[0-6])
-```
+    case $ip in
+        192.168.12.*)
+            [ "$ultimo" -ge 101 ] && [ "$ultimo" -le 146 ] && return 0
+            ;;
+    esac
 
----
+    return 1
+}
+✏️ Cómo modificar el rango
+🔹 Cambiar solo el rango
 
-### ✏️ Cómo modificar el rango
+Ejemplo: 192.168.12.50–80
 
-Editar la línea dentro del script:
+[ "$ultimo" -ge 50 ] && [ "$ultimo" -le 80 ] && return 0
 
-```bash
-if (ip ~ /^192\.168\.12\.(RANGO)$/ && mac != "")
-```
+🔹 Cambiar la red
+Ejemplo: 192.168.20.10–40
 
----
+case $ip in
+    192.168.20.*)
+        [ "$ultimo" -ge 10 ] && [ "$ultimo" -le 40 ] && return 0
+        ;;
+esac
 
-### 📌 Ejemplos
-
-**Rango 50–80**
-
-```bash
-(5[0-9]|6[0-9]|7[0-9]|80)
-```
-
-**Otra red (192.168.20.10–40)**
-
-```bash
-^192\.168\.20\.(1[0-9]|2[0-9]|3[0-9]|40)$
-```
-
-**Sin filtro de rango (no recomendado)**
-
-```bash
-^192\.168\.12\.[0-9]+$
-```
-
----
-
-### ⚠️ Recomendación
-
-Mantener rangos específicos mejora:
-
-* Precisión del encendido
-* Rendimiento
-* Evita enviar WOL a dispositivos innecesarios
-
+🔹 Agregar múltiples rangos (multi-lab)
+case $ip in
+    192.168.11.*)
+        [ "$ultimo" -ge 101 ] && [ "$ultimo" -le 146 ] && return 0
+        ;;
+    192.168.12.*)
+        [ "$ultimo" -ge 101 ] && [ "$ultimo" -le 146 ] && return 0
+        ;;
+esac
+⚠️ Recomendaciones
+Mantener rangos específicos evita encender dispositivos innecesarios
+No usar rangos abiertos (ej: 1–254) en redes grandes
+Asegurarse de que las IP coincidan con los DHCP Static Mappings

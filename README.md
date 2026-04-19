@@ -125,3 +125,62 @@ Filtra automáticamente el rango:
 * Requiere Bot Telegram revisa como crear aqui ---> `crear_bot.txt`
 * Requiere configurar el entorno windows puedes seguir esta guia 
 ---> https://www.geeknetic.es/Guia/3096/Como-encender-de-forma-remota-un-PC-usando-Wake-On-Lan.html
+
+## 🔧 Configuración de rango de IP `wol_auto.sh`
+
+El script filtra automáticamente los equipos basándose en el rango de IP definido dentro del bloque `awk`.
+
+Por defecto:
+
+```
+192.168.12.101 – 192.168.12.146
+```
+
+Esto está definido mediante una expresión regular:
+
+```bash
+(10[1-9]|1[1-3][0-9]|14[0-6])
+```
+
+---
+
+### ✏️ Cómo modificar el rango
+
+Editar la línea dentro del script:
+
+```bash
+if (ip ~ /^192\.168\.12\.(RANGO)$/ && mac != "")
+```
+
+---
+
+### 📌 Ejemplos
+
+**Rango 50–80**
+
+```bash
+(5[0-9]|6[0-9]|7[0-9]|80)
+```
+
+**Otra red (192.168.20.10–40)**
+
+```bash
+^192\.168\.20\.(1[0-9]|2[0-9]|3[0-9]|40)$
+```
+
+**Sin filtro de rango (no recomendado)**
+
+```bash
+^192\.168\.12\.[0-9]+$
+```
+
+---
+
+### ⚠️ Recomendación
+
+Mantener rangos específicos mejora:
+
+* Precisión del encendido
+* Rendimiento
+* Evita enviar WOL a dispositivos innecesarios
+

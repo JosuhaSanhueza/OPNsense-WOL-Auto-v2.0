@@ -27,7 +27,8 @@ Automatización de encendido de equipos mediante Wake-on-LAN (WOL) en OPNsense, 
 
 * OPNsense
 * DHCP con Static Mappings configurado
-* Wake-on-LAN habilitado en los equipos
+* Wake-on-LAN habilitado en los equipos (configuracion Windows y Bios)
+* Tener Bot Telegram puedes revisar el archivo `crear_bot.txt`
 * Acceso a internet (para API de feriados y Telegram)
 
 ---
@@ -120,5 +121,6 @@ Filtra automáticamente el rango:
 
 * No funcionará si no existen static mappings en DHCP
 * Requiere que WOL esté habilitado en BIOS/NIC
+* Requiere Bot Telegram revisa como crear aqui ---> `crear_bot.txt`
 * Requiere configurar el entorno windows puedes seguir esta guia 
 ---> https://www.geeknetic.es/Guia/3096/Como-encender-de-forma-remota-un-PC-usando-Wake-On-Lan.html

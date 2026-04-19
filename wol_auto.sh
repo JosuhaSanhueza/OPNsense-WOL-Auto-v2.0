@@ -1,7 +1,7 @@
 #!/bin/sh
 # ======================================================
 #  Script WOL optimizado (solo DHCP static mappings)
-#  Tener en cuenta tu Broadcast si es mascara 24 es "192.168.12.255"
+#  Tener en cuenta tu Broadcast si es máscara 24 es "192.168.12.255"
 #  si es 16 "192.168.255.255"
 # ======================================================
 

@@ -120,9 +120,5 @@ Filtra automáticamente el rango:
 
 * No funcionará si no existen static mappings en DHCP
 * Requiere que WOL esté habilitado en BIOS/NIC
-
----
-
-## 👨‍💻 Autor
-
-Josuha Sanhueza
+* Requiere configurar el entorno windows puedes seguir esta guia 
+---> https://www.geeknetic.es/Guia/3096/Como-encender-de-forma-remota-un-PC-usando-Wake-On-Lan.html

@@ -50,7 +50,7 @@ chmod +x /usr/local/bin/wol_auto.sh
 Editar dentro del script:
 
 ```bash
-BROADCAST="192.168.255.255"
+BROADCAST="192.168.12.255"
 BOT_TOKEN="TU_TOKEN"
 CHAT_ID_1="TU_CHAT_ID"
 ```

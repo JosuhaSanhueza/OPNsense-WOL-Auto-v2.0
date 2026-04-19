@@ -19,6 +19,7 @@ Automatización de encendido de equipos mediante Wake-on-LAN (WOL) en OPNsense, 
 ## 📂 Estructura
 
 * `wol_auto.sh` → Script principal
+* `wol_auto(multi).sh` → opcional, si tienes mas de un lab prefiere usar este
 * `actions_wolauto.conf` → Integración con OPNsense configd
 * `cron_example.txt` → Ejemplo de tarea programada
 
